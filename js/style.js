@@ -1,13 +1,12 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
 function browserRedirect() {
     if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-        hechen();
         $(".button").on("touchstart", function (e) {
             makeCode();
-
-        }).on("touchend ", function (e) {
-            hechen();
             event.preventDefault()
+        }).on("click ", function (e) {
+            hechen();
+
         })
     } else {
         $(".button").on("mousedown", function (e) {
