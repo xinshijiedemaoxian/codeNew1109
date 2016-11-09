@@ -4,9 +4,10 @@ function browserRedirect() {
         $(".button").on("touchstart", function (e) {
             makeCode();
             event.preventDefault()
-        }).on("click ", function (e) {
+        });
+        $(".button").on("touchend ", function (e) {
             hechen();
-
+            event.preventDefault();
         })
     } else {
         $(".button").on("mousedown", function (e) {
