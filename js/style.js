@@ -1,27 +1,11 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
-function browserRedirect() {
-    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-        $(".button").on("touchstart", function (e) {
-            makeCode();
-            event.preventDefault()
-        });
-        $(".button").on("touchend ", function (e) {
-            hechen();
-            event.preventDefault();
-        })
-    } else {
-        $(".button").on("mousedown", function (e) {
-            makeCode()
-        }).on("mouseup ", function (e) {
-            hechen()
-        })
-    }
-}
+
+    
+
 $(function () {
     $("#desc").focus(function () {
         $("#desc").val("")
     });
-    browserRedirect();
 });
 function makeCode() {
     $("#result_content").show(300);
@@ -72,3 +56,19 @@ function setWidthHeight(img, maxWidth, maxHeight) {
     if (imgWidth <= maxWidth && imgHeight <= maxHeight) {
     }
 };
+if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+    $(".button").on("touchstart", function (e) {
+        makeCode();
+        event.preventDefault()
+    });
+    $(".button").on("touchend ", function (e) {
+        hechen();
+        event.preventDefault();
+    })
+} else {
+    $(".button").on("mousedown", function (e) {
+        makeCode()
+    }).on("mouseup ", function (e) {
+        hechen()
+    })
+}
