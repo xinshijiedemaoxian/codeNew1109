@@ -4,7 +4,7 @@ function browserRedirect() {
         $(".button").on("touchstart", function (e) {
             makeCode();
         })
-    } else {
+    }else {
         $(".button").on("click", function (e) {
             makeCode();
         });
@@ -29,9 +29,8 @@ function makeCode() {
     setTimeout("hechen()",10);
     $("#result_content").show(200);
 }
-
 function closeResult() {
-    $("#result_content").hide(200)
+    $("#result_content").hide(300)
 }
 $("#text").on("blur", function () {
     makeCode();
@@ -42,6 +41,7 @@ $("#text").on("blur", function () {
 });
 function hechen() {
     var mainCtx = getCanvasContext("main");
+
     var maxWidth = mainCtx.width;
     var maxHeight = mainCtx.height;
     mainCtx.fillStyle = "#fff";
@@ -58,6 +58,7 @@ function hechen() {
     }
     var imageData = mainc.toDataURL("image/jpg");
     document.getElementById("myimage").src = imageData;
+
 }
 function getCanvasContext(id) {
     return document.getElementById(id).getContext("2d")
