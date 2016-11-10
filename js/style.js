@@ -3,19 +3,11 @@ function browserRedirect() {
     if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
         $(".button").on("touchstart", function (e) {
             makeCode();
-
-        });
-        $(".button").on("touchend ", function (e) {
-            hechen();
-
         })
     } else {
-        $(".button").on("mousedown", function (e) {
-            makeCode()
-        }).on("mouseup ", function (e) {
-            hechen();
-
-        })
+        $(".button").on("click", function (e) {
+            makeCode();
+        });
     }
 }
 $(function () {
@@ -25,24 +17,27 @@ $(function () {
     browserRedirect();
 });
 function makeCode() {
-    $("#result_content").show(300);
-    var name = document.getElementById("companyname").value;
-    var identifier = document.getElementById("identifier").value;
-    var address = document.getElementById("address").value;
-    var bank = document.getElementById("bank").value;
-    var elText = document.getElementById("text").value;
+    clearTimeout(hechen());
+    var name = $("#companyname").val();
+    var identifier = $("#identifier").val();
+    var address = $("#address").val();
+    var bank = $("#bank").val();
+    var elText = $("#text").val();
     elText = "1:" + name + "\r\n2:" + identifier + "\r\n3:" + address + "\r\n4:" + bank + "\r\n";
     var elText2 = "公司名称:北京华夏聚龙自动化股份公司\r\n纳税人识别号:911101097481361512\r\n地址：北京市丰台区南四环西路188号" + "（总部基地）十区27号楼电话:010-52256809\r\n开户行及账号:交通银行北京丰台支行110061242018010079265";
-    qrcode.makeCode(elText)
+    qrcode.makeCode(elText);
+    setTimeout("hechen()",10);
+    $("#result_content").show(200);
 }
+
 function closeResult() {
-    $("#result_content").hide(300)
+    $("#result_content").hide(200)
 }
 $("#text").on("blur", function () {
-    makeCode()
+    makeCode();
 }).on("keydown", function (e) {
     if (e.keyCode == 13) {
-        makeCode()
+        makeCode();
     }
 });
 function hechen() {
@@ -62,7 +57,7 @@ function hechen() {
         mainCtx.fillText($("#desc").val(), 10, 285)
     }
     var imageData = mainc.toDataURL("image/jpg");
-    document.getElementById("myimage").src = imageData
+    document.getElementById("myimage").src = imageData;
 }
 function getCanvasContext(id) {
     return document.getElementById(id).getContext("2d")
