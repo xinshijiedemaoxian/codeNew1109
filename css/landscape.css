@@ -1,0 +1,36 @@
+#result_content {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .75);
+	display: none;
+	z-index: 22;
+	text-align: center
+}
+
+#group {
+	width: 230px;
+	position: absolute;
+}
+
+#group img {
+	width: 230px;
+}
+#group .result_tips{position:fixed;top:15px;left:15px;}
+#group .result_tips img {
+	height: 30px;
+	width: 30px;
+	padding: 0;
+	background: none;
+}
+
+.resultbtn {
+	width: 100%;
+}
+
+.resultbtn p,
+.resultbtn div {
+	display: inline
+}
+
