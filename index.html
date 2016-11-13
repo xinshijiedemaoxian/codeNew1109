@@ -22,65 +22,14 @@
 			@media screen and (orientation: landscape) {
 			  /*横屏 css*/
 				#desc{background: #04be02;}
+				#group {  width: 230px;  position: absolute }
+				#group p{display: none;}
+				#group img {width: 230px }
+				#group .result_tips {position: fixed;top: 10px;left: 10px;}
 			}
-
 		</style>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/qrcode.js"></script>
-		<!--<script type="text/javascript">
-			//判断访问终端
-			var browser={
-				versions:function(){
-					var u = navigator.userAgent, app = navigator.appVersion;
-					return {
-						trident: u.indexOf('Trident') > -1, //IE内核
-						presto: u.indexOf('Presto') > -1, //opera内核
-						webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-						gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
-						mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-						ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-						android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
-						iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
-						iPad: u.indexOf('iPad') > -1, //是否iPad
-						webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-						weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
-						qq: u.match(/\sQQ/i) == " qq" //是否QQ
-					};
-				}(),
-				language:(navigator.browserLanguage || navigator.language).toLowerCase()
-			};
-			$(function(){
-				//code from http://caibaojian.com/browser-ios-or-android.html
-				if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-					//alert(navigator.userAgent);
-
-				} else if (/(Android)/i.test(navigator.userAgent)) {
-
-					//alert(navigator.userAgent);
-				} else {
-
-				};
-			});
-			function orient() {
-				if (window.orientation == 90 || window.orientation == -90) {
-//ipad、iphone竖屏；Andriod横屏
-					$("#desc").css("background","#ddd");
-					$("body").attr("class", "landscape");
-					orientation = 'landscape';
-					return false;
-				}else if (window.orientation == 0 || window.orientation == 180) {
-//ipad、iphone横屏；Andriod竖屏
-					$("#desc").css("background","blue");
-					$("body").attr("class", "portrait");
-					orientation = 'portrait';
-					return false;
-				}
-			}
-			//用户变化屏幕方向时调用
-			$(window).bind( 'orientationchange', function(e){
-				orient();
-			});
-		</script>-->
 	</head>
 	<body>
 		<div class="logo">开票信息</div>
