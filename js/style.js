@@ -31,6 +31,7 @@ function orient() {
         return false;
     }else if (window.orientation == 0 || window.orientation == 180) {
 //ipad、iphone横屏；Andriod竖屏
+        $("#desc").css("background","blue");
         $("body").attr("class", "portrait");
         orientation = 'portrait';
         return false;
