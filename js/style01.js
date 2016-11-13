@@ -1,36 +1,26 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
-// function browserRedirect() {
-//     if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-//         $(".button").on("touchstart", function (e) {
-//             makeCode();
-//         })
-//     } else {
-//         $(".button").on("click", function (e) {
-//             makeCode();
-//         });
-//     }
-// }
+function browserRedirect() {
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+        $(".button").on("touchstart", function () {
+            makeCode();
+        })
+    } else {
+        $(".button").on("click", function () {
+            makeCode();
+        });
+    }
+}
 $(function () {
-    
+    clearTimeout(hechen());
     $("#desc").focus(function () {
         $("#desc").val("")
     });
-    // browserRedirect();
-    $(".button").on("click", function (e) {
-        makeCode();
-    });
+     browserRedirect();
+    // $(".button").on("click", function () {
+    //     makeCode();
+    // });
 });
-function hengshuping(){
-    if(window.orientation==180||window.orientation==0){
-        alert("竖屏状态！")
-    }
-    if(window.orientation==90||window.orientation==-90){
-        alert("横屏状态！")
-    }
-}
-window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
 function makeCode() {
-    clearTimeout(hechen());
     var name = $("#companyname").val();
     var identifier = $("#identifier").val();
     var address = $("#address").val();
@@ -40,15 +30,16 @@ function makeCode() {
     var elText2 = "公司名称:北京华夏聚龙自动化股份公司\r\n纳税人识别号:911101097481361512\r\n地址：北京市丰台区南四环西路188号" + "（总部基地）十区27号楼电话:010-52256809\r\n开户行及账号:交通银行北京丰台支行110061242018010079265";
     qrcode.makeCode(elText);
     setTimeout("hechen()",200);
+
     //hechen();
-    $("#result_content").show(350);
+    $("#result_content").show(300);
 }
 
 function closeResult() {
     $("#result_content").hide(200)
 }
 $("#text").on("blur", function () {
-    makeCode();
+        makeCode();
 }).on("keydown", function (e) {
     if (e.keyCode == 13) {
         makeCode();
