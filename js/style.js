@@ -10,8 +10,10 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
 //         });
 //     }
 // }
+
 $(function () {
-    
+    //页面加载时调用
+    orient();
     $("#desc").focus(function () {
         $("#desc").val("")
     });
@@ -20,15 +22,24 @@ $(function () {
         makeCode();
     });
 });
-function hengshuping(){
-    if(window.orientation==180||window.orientation==0){
-        alert("竖屏状态！")
-    }
-    if(window.orientation==90||window.orientation==-90){
-        alert("横屏状态！")
+function orient() {
+    if (window.orientation == 90 || window.orientation == -90) {
+//ipad、iphone竖屏；Andriod横屏
+        $("#desc").css("background","#ddd");
+        $("body").attr("class", "landscape");
+        orientation = 'landscape';
+        return false;
+    }else if (window.orientation == 0 || window.orientation == 180) {
+//ipad、iphone横屏；Andriod竖屏
+        $("body").attr("class", "portrait");
+        orientation = 'portrait';
+        return false;
     }
 }
-window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
+//用户变化屏幕方向时调用
+$(window).bind( 'orientationchange', function(e){
+    orient();
+});
 function makeCode() {
     clearTimeout(hechen());
     var name = $("#companyname").val();
