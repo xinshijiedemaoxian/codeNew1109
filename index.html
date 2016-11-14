@@ -30,9 +30,9 @@
 			@media screen and (orientation: landscape) {
 			  /*横屏 css*/
 				#desc{color: #4673f4!important;}
-				#group {  width: 230px;  position: absolute }
+				#group {  width: 250px;  position: absolute }
 				#group p{display: none;}
-				#group img {width: 230px }
+				#group img {width: 250px }
 				#group .result_tips {position: fixed;top: 5px;left: 10px;}
 			}
 		</style>
@@ -56,11 +56,14 @@
 			</li>
 			<li class="lists">
 				<ul>
-					<li><label class="style_label" style="background-position: -188px center;"></label><input type="text" id="desc" value="开票信息" class="txtValue" style="color:red;"/></li>
+					<li>
+						<label class="style_label" style="background-position: -188px center;"></label><input type="text" id="desc" value="开票信息" class="txtValue" style="color:#752107;"/>
+						<p class="hint"></p>
+					</li>
 				</ul>
 			</li>
 		</ul>
-		<div id="btn"><button class="button" type="button">生成二维码</button></div>
+		<div id="btn"><button class="button" type="button" >生成二维码</button></div>
 		<div id="result_content">
 			<input id="text" type="text" value="http://hxjl.com.cn" hidden style="width:80%" /><br />
 			<div id="group">

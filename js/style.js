@@ -10,17 +10,33 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
         });
     }
 }*/
-
+var ok1 = false;
 $(function () {
-    $("#desc").focus(function () {
-        $("#desc").val("")
-    });
+    // $("#desc").focus(function () {
+    //     $("#desc").val("")
+    // });
+    $("#desc").blur(function () {
+        testLen();
+         });
     // browserRedirect();
     $(".button").on("click", function (e) {
-        makeCode();
+        if(ok1){
+            makeCode();
+        }else{
+            return false;
+        }
     });
 });
-
+function testLen(){
+    var len=$("#desc").val().length;
+    if(len<17 && len>0){
+        ok1 = true;
+        $(".hint").html("");
+    } else {
+        $("#desc").focus();
+        $(".hint").html("字符长度需在1到16之间");
+    }
+}
 function makeCode() {
     clearTimeout(hechen());
     var name = $("#companyname").val();
@@ -34,8 +50,6 @@ function makeCode() {
     setTimeout("hechen()",250);
     //hechen();
     setTimeout("time()",100);
-
-
 }
 function time(){
     $("#result_content").show(200);
