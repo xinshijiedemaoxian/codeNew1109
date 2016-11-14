@@ -33,9 +33,13 @@ function makeCode() {
     qrcode.makeCode(elText);
     setTimeout("hechen()",250);
     //hechen();
-    $("#result_content").show(350);
-}
+    setTimeout("time()",100);
 
+
+}
+function time(){
+    $("#result_content").show(200);
+}
 function closeResult() {
     $("#result_content").hide(200)
 }
