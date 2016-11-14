@@ -12,14 +12,15 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
 }*/
 var ok1 = false;
 $(function () {
+    //获取焦点表单清空
     // $("#desc").focus(function () {
     //     $("#desc").val("")
     // });
     $("#desc").blur(function () {
         testLen();
-         });
+    });
     // browserRedirect();
-    $(".button").on("click", function (e) {
+    $(".button").on("click", function () {
         if(ok1){
             makeCode();
         }else{
@@ -27,14 +28,19 @@ $(function () {
         }
     });
 });
+//限制表单字数
 function testLen(){
     var len=$("#desc").val().length;
     if(len<17 && len>0){
         ok1 = true;
         $(".hint").html("");
+        $(".button").css({"background":"#26b9a9"});
+        // $('.button').removeAttr("disabled");
     } else {
-        $("#desc").focus();
         $(".hint").html("字符长度需在1到16之间");
+        $("#desc").focus();
+        $(".button").css({"background":"#999"});
+        // $(".button").attr("disabled","disabled");
     }
 }
 function makeCode() {
