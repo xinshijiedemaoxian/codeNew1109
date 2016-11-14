@@ -55,7 +55,7 @@ function hechen() {
     var maxWidth = mainCtx.width;
     var maxHeight = mainCtx.height;
     mainCtx.fillStyle = "#fff";
-    mainCtx.fillRect(0, 0, 276, 290);
+    mainCtx.fillRect(0, 0, 276, 305);
     var mainc = document.getElementById("main");
     var codeImg = new Image();
     codeImg.src = $("#qrcode").children("img")[0].src;
@@ -64,7 +64,7 @@ function hechen() {
         mainCtx.font = "16px Arial";
         mainCtx.fillStyle = "#1c1c1c";
         mainCtx.lineWidth = 1;
-        mainCtx.fillText($("#desc").val(), 10, 285)
+        mainCtx.fillText($("#desc").val(), 10, 293)
     }
     var imageData = mainc.toDataURL("image/jpg");
     document.getElementById("myimage").src = imageData;
