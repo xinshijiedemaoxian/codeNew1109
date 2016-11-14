@@ -64,7 +64,9 @@ function hechen() {
         mainCtx.font = "16px Arial";
         mainCtx.fillStyle = "#1c1c1c";
         mainCtx.lineWidth = 1;
-        mainCtx.fillText($("#desc").val(), 10, 295)
+        mainCtx.textAlign="start";
+        mainCtx.textAlign = "center"; //设置文本的水平对对齐方式
+        mainCtx.fillText($("#desc").val(), 138, 295)
     }
     var imageData = mainc.toDataURL("image/jpg");
     document.getElementById("myimage").src = imageData;
