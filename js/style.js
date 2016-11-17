@@ -19,7 +19,7 @@ $(function () {
         testLen();
     });*/
     $("#desc").bind("input propertychange",function(){
-        testLen();
+        testLen();document.getElementsByTagName()
     })
     // browserRedirect();
     $(".button").on("click", function () {
