@@ -14,24 +14,24 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
 var ok1 = false;
 $(function () {
     //获取焦点表单清空
-    /*$("#desc").focus(function () {
+    $("#desc").focus(function () {
         // $("#desc").val("");
         testLen();
-    });*/
-    $("#desc").bind("input propertychange",function(){
-        testLen();document.getElementsByTagName()
-    })
+    });
+   /* $("#desc").bind("input propertychange",function(){
+        testLen();
+    })*/
     // browserRedirect();
-    $(".button").on("click", function () {
+/*    $(".button").on("click", function () {
         if(ok1){
             makeCode();
         }else{
             return false;
         }
-    });
-   /* $(".button").on("click", function () {
-            makeCode();
     });*/
+    $(".button").on("click", function () {
+            makeCode();
+    });
 });
 //限制表单字数
 function testLen(){
