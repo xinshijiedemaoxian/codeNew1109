@@ -1,4 +1,5 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
+//判断移动端与pc端
 /*function browserRedirect() {
     if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
         $(".button").on("touchstart", function (e) {
@@ -10,42 +11,43 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
         });
     }
 }*/
-/*var ok1 = false;*/
+var ok1 = false;
 $(function () {
     //获取焦点表单清空
-    $("#desc").focus(function () {
-        $("#desc").val("")
-    });
-/*    $("#desc").blur(function () {
+    /*$("#desc").focus(function () {
+        // $("#desc").val("");
         testLen();
     });*/
+    $("#desc").bind("input propertychange",function(){
+        testLen();
+    })
     // browserRedirect();
-/*    $(".button").on("click", function () {
+    $(".button").on("click", function () {
         if(ok1){
             makeCode();
         }else{
             return false;
         }
-    });*/
-    $(".button").on("click", function () {
-            makeCode();
     });
+   /* $(".button").on("click", function () {
+            makeCode();
+    });*/
 });
 //限制表单字数
-/*function testLen(){
+function testLen(){
     var len=$("#desc").val().length;
     if(len<17 && len>0){
         ok1 = true;
         $(".hint").html("");
         $(".button").css({"background":"#26b9a9"});
-        // $('.button').removeAttr("disabled");
+        $('.button').removeAttr("disabled");
     } else {
         $(".hint").html("字符长度需在1到16之间");
-        $("#desc").focus();
+
         $(".button").css({"background":"#999"});
-        // $(".button").attr("disabled","disabled");
+        $(".button").attr("disabled","disabled");
     }
-}*/
+}
 function makeCode() {
     clearTimeout(hechen());
     var name = $("#companyname").val();
