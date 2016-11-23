@@ -13,9 +13,11 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
 }*/
 function enableSubmit(bool){
     if(bool){
+        $(".button").removeAttr("disabled");
         $(".button").removeClass("buttonG").addClass("buttonB");
     }
     else {
+        $("#submit").attr("disabled","disabled");
         $(".button").addClass("buttonG").removeClass("buttonB");
     }
 }
