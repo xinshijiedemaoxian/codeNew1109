@@ -45,25 +45,34 @@
 			<li class="lists">
 				<ul>
 					<li><label class="style_label" style="background-position:0 center;"></label><input type="text" value="" placeholder="公司名称" id="companyname" class="txtValue" /></li>
-					<li><label class="style_label" style="background-position: -47px center;"></label><input type="text" value="" placeholder="纳税人识别号(专用发票需填写)" id="identifier" class="txtValue" /></li>
-					<li><label class="style_label" style="background-position: -94px center;"></label><textarea style="vertical-align:top;resize: none;" value="" placeholder="地址及电话(专用发票需填写)" rows="3" id="address" class="txtValue"></textarea></li>
-				</ul>
-			</li>
-			<li class="lists">
-				<ul>
-					<li><label class="style_label" style="background-position: -141px center;"></label><textarea style="vertical-align:top;resize: none;" value="" placeholder="开户行及账号(专用发票需填写)" rows="3" id="bank" class="txtValue"></textarea></li>
+					<li>
+						<label class="style_label" style="background-position: -47px center;"></label><input type="text" value="" placeholder="纳税人识别号(专用发票需填写)" id="identifier" class="txtValue" onfocus="v_ident()" onblur="v_ident()"/>
+					   <p class="hint hintIdent"></p>
+					</li>
+					<li>
+						<label class="style_label" style="background-position: -94px center;"></label><textarea style="vertical-align:top;resize: none;" value="" placeholder="地址及电话(专用发票需填写)" rows="3" id="address" class="txtValue" onfocus="v_address()" onblur="v_address()"></textarea>
+						<p class="hint hintAdr"></p>
+					</li>
 				</ul>
 			</li>
 			<li class="lists">
 				<ul>
 					<li>
-						<label class="style_label" style="background-position: -188px center;"></label><input type="text" id="desc" value="开票信息" class="txtValue"  maxlength='20'  style="color:#752107;"/>
-						<p class="hint"></p>
+						<label class="style_label" style="background-position: -141px center;"></label><textarea style="vertical-align:top;resize: none;" value="" placeholder="开户行及账号(专用发票需填写)" rows="3" id="bank" class="txtValue" onfocus="v_bank()" onblur="v_bank()"></textarea>
+						<p class="hint hintBank"></p>
+					</li>
+				</ul>
+			</li>
+			<li class="lists">
+				<ul>
+					<li>
+						<label class="style_label" style="background-position: -188px center;"></label><input type="text" id="desc" placeholder="开票信息(专用)" class="txtValue"  maxlength='20'  style="color:#752107;" onfocus="v_desc()" onblur="v_desc()"/>
+						<p class="hint hintDesc"></p>
 					</li>
 				</ul>
 			</li>
 		</ul>
-		<div id="btn"><button class="button" type="button" >生成二维码</button></div>
+		<div id="btn"><button class="button" type="button" disabled="disabled" onclick="adaptValue();">生成二维码</button></div>
 		<div id="result_content">
 			<input id="text" type="text" value="http://hxjl.com.cn" hidden style="width:80%" /><br />
 			<div id="group">

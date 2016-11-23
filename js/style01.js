@@ -11,79 +11,43 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
         });
     }
 }*/
-function enableSubmit(bool){
-    if(bool){
-        $(".button").removeAttr("disabled");
-        $(".button").removeClass("buttonG").addClass("buttonB");
-    }
-    else {
-        $("#submit").attr("disabled","disabled");
-        $(".button").addClass("buttonG").removeClass("buttonB");
-    }
-}
-function v_submitbutton(){
-    for(f in flags) if(!flags[f]) {
-        enableSubmit(false);
-        return;
-    }
-    enableSubmit(true);
-}
-var flags = [false,false,false,false];
-function v_ident(){
-    var ident = $("#identifier").val();
-    if(ident.length==0) {
-        $(".hintIdent").html("不得为空");
-        flags[0]=false;
-    }else{
-        $(".hintIdent").html("");
-        flags[0] = true;
-    }
-    v_submitbutton();
-}
-function v_address(){
-    var address = $("#address").val();
-    if(address.length==0) {
-        $(".hintAdr").html("不得为空");
-        flags[1]=false;
-    }else{
-        $(".hintAdr").html("");
-        flags[1] = true;
-    }
-    v_submitbutton();
-}
-function v_bank(){
-    var bank = $("#bank").val();
-    if(bank.length==0) {
-        $(".hintBank").html("不得为空");
-        flags[2]=false;
-    }else{
-        $(".hintBank").html("");
-        flags[2] = true;
-    }
-    $(".verify").css({"border-color":"#cdcdcd"});
-    v_submitbutton();
-}
-function v_desc(){
-    var desc = $("#desc").val();
-    if(desc.length==0) {
-        $(".hintDesc").html("不得为空");
-        flags[3]=false;
-    }else{
-        $(".hintDesc").html("");
-        flags[3] = true;
-    }
-    $(".verify").css({"border-color":"#cdcdcd"});
-    v_submitbutton();
-}
-function adaptValue(){
-    if(flags[0],flags[1],flags[2],flags[3]){
-        makeCode()
-    }
-
-}
+var ok1 = false;
 $(function () {
-    v_submitbutton();
+    //获取焦点表单清空
+    $("#desc").focus(function () {
+        // $("#desc").val("");
+        testLen();
+    });
+   /* $("#desc").bind("input propertychange",function(){
+        testLen();
+    })*/
+    // browserRedirect();
+/*    $(".button").on("click", function () {
+        if(ok1){
+            makeCode();
+        }else{
+            return false;
+        }
+    });*/
+    $(".button").on("click", function () {
+            makeCode();
+    });
 });
+//限制表单字数
+function testLen(){
+    var len=$("#desc").val().length;
+    if(len<17 && len>0){
+        ok1 = true;
+        $(".hint").html("");
+        $(".button").css({"background":"#26b9a9"});
+        $('.button').removeAttr("disabled");
+    } else {
+        $(".hint").html("字符长度需在1到16之间");
+
+        $(".button").css({"background":"#999"});
+        $(".button").attr("disabled","disabled");
+    }
+}
 function makeCode() {
     clearTimeout(hechen());
     var name = $("#companyname").val();
