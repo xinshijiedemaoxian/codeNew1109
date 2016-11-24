@@ -145,10 +145,8 @@ ol {
     background: none;
 }
 
-.idfHint,
-.adrHint,
-.bankHint,
-.hint {
+.cnHint,
+.descHint {
     font-size: 14px;
     line-height: 20px;
     color: red;

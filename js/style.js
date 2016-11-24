@@ -1,19 +1,12 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
-var ok2 = false;
-var ok3 = false;
-var ok4 = false;
+var ok1 = false;
 $(function () {
-    /*    $("#identifier,#address,#bank").bind(
-     "input propertychange", function(){
-     testLen();
-     });*/
-
     $("#desc").bind({
         focus:function(){
-            $(".hint").html("开票信息不能超过16字符");
+            $(".descHint").html("开票信息不能超过16字符");
         },
         blur:function(){
-            $(".hint").html("");
+            $(".descHint").html("");
         }
     });
     $(".button").on("click", function () {
@@ -21,44 +14,22 @@ $(function () {
         if(len===0){
             $("#desc").val("开票信息");
         }
-        if(ok2&&ok3&&ok4){
+        if(ok1){
             makeCode();
+        }else{
+            $(".cnHint").html("不能为空，请填写");
         }
     });
 });
-function idf(){
-    var idfLen=$("#identifier").val().length;
-    if(idfLen==""){
-        $(".idfHint").html("不能为空，请填写");
-        ok2 = false;
+function copName(){
+    var copName=$("#companyname").val().length;
+    if(copName==""){
+        $(".cnHint").html("不能为空，请填写");
+        ok1 = false;
     }else{
-        ok2 = true;
-        $(".idfHint").html("");
+        ok1 = true;
+        $(".cnHint").html("");
     }
-    testLen();
-};
-function adr(){
-    var adrLen=$("#address").val().length;
-    if(adrLen==""){
-        $(".adrHint").html("不能为空，请填写");
-        ok3 = false;
-    }else{
-        ok3 = true;
-        $(".adrHint").html("");
-
-    };
-    testLen();
-};
-
-function bank(){
-    var bkLen=$("#bank").val().length;
-    if(bkLen==""){
-        $(".bankHint").html("不能为空，请填写");
-        ok4 = false;
-    }else{
-        ok4 = true;
-        $(".bankHint").html("");
-    };
     testLen();
 };
 //限制表单字数
@@ -71,7 +42,7 @@ function bank(){
  }
  };*/
 function testLen(){
-    if(ok2&&ok3&&ok4){
+    if(ok1){
         $(".button").removeClass("buttonG").addClass("buttonB");
         //$(".button").removeAttr("disabled");
     }else {
@@ -94,10 +65,10 @@ function makeCode() {
     setTimeout("time()",100);
 }
 function time(){
-    $("#result_content").show(200);
+    $("#result_content").show();
 }
 function closeResult() {
-    $("#result_content").hide(200)
+    $("#result_content").hide()
 }
 $("#text").on("blur", function () {
     makeCode();
