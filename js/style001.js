@@ -1,83 +1,100 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
+//判断移动端与pc端
+/*function browserRedirect() {
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+        $(".button").on("touchstart", function (e) {
+            makeCode();
+        })
+    } else {
+        $(".button").on("click", function (e) {
+            makeCode();
+        });
+    }
+}*/
+var ok1 = false;
 var ok2 = false;
 var ok3 = false;
 var ok4 = false;
 $(function () {
-    /*    $("#identifier,#address,#bank").bind(
-     "input propertychange", function(){
-     testLen();
-     });*/
-
-    $("#desc").bind({
-        focus:function(){
-            $(".hint").html("开票信息不能超过16字符");
-        },
-        blur:function(){
-            $(".hint").html("");
-        }
+    //获取焦点表单清空
+    /*$("#desc").focus(function () {
+        // $("#desc").val("");
+        testLen();
+    });*/
+   $("input,textarea").bind("input propertychange",function(){
+        testLen();
     });
-    $(".button").on("click", function () {
-        var len=$("#desc").val().length;
-        if(len===0){
-            $("#desc").val("开票信息");
-        }
-        if(ok2&&ok3&&ok4){
+    $("#identifier").bind("blur",function(){
+        idf();
+    });
+    $("#address").bind("blur",function(){
+        adr();
+    });
+    $("#bank").bind("blur",function(){
+        bank();
+    });
+    $("#desc").bind("blur",function(){
+        infTitle();
+    });
+    // browserRedirect();
+/*    $(".button").on("click", function () {
+        if(ok1){
             makeCode();
+        }else{
+            return false;
         }
+    });*/
+    $(".button").on("click", function () {
+            makeCode();
     });
 });
 function idf(){
     var idfLen=$("#identifier").val().length;
     if(idfLen==""){
-        $(".idfHint").html("不能为空，请填写");
-        ok2 = false;
+        $(".idfHint").html("不能为空，请填写");  
     }else{
         ok2 = true;
         $(".idfHint").html("");
     }
-    testLen();
 };
 function adr(){
     var adrLen=$("#address").val().length;
     if(adrLen==""){
         $(".adrHint").html("不能为空，请填写");
-        ok3 = false;
     }else{
         ok3 = true;
         $(".adrHint").html("");
 
-    };
-    testLen();
+    }
 };
 
 function bank(){
     var bkLen=$("#bank").val().length;
     if(bkLen==""){
         $(".bankHint").html("不能为空，请填写");
-        ok4 = false;
     }else{
         ok4 = true;
         $(".bankHint").html("");
-    };
-    testLen();
+    }
 };
 //限制表单字数
-/*function infTitle(){
- var len=$("#desc").val().length;
- if(len<17 && len>0){
- $(".hint").html("");
- } else {
- $(".hint").html("字符长度需在1到16之间");
- }
- };*/
-function testLen(){
-    if(ok2&&ok3&&ok4){
-        $(".button").removeClass("buttonG").addClass("buttonB");
-        //$(".button").removeAttr("disabled");
-    }else {
-        $(".button").removeClass("buttonB").addClass("buttonG");
-        //$(".button").attr("disabled","disabled");
+function infTitle(){
+    var len=$("#desc").val().length;
+    if(len<17 && len>0){
+        ok1 = true;
+        $(".hint").html("");
+    } else {
+        $(".hint").html("字符长度需在1到16之间");
     }
+};
+function testLen(){
+   if(ok1&&ok2&&ok3&&ok4){
+       $(".button").css({"background":"#26b9a9"});
+       $('.button').removeAttr("disabled");
+   }else {
+       $(".button").css({"background":"#999"});
+       $(".button").attr("disabled","disabled");
+   }
 }
 function makeCode() {
     clearTimeout(hechen());
