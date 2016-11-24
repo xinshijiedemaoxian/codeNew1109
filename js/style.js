@@ -3,7 +3,7 @@ var ok1 = false;
 $(function () {
     $("#desc").bind({
         focus:function(){
-            $(".descHint").html("开票信息不能超过16字符");
+            $(".descHint").html("二维码标识不能超过16字符");
         },
         blur:function(){
             $(".descHint").html("");
