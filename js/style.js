@@ -1,4 +1,5 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
+<<<<<<< HEAD
 var ok2 = false;
 var ok3 = false;
 var ok4 = false;
@@ -77,8 +78,93 @@ function testLen(){
     }else {
         $(".button").removeClass("buttonB").addClass("buttonG");
         //$(".button").attr("disabled","disabled");
+=======
+//判断移动端与pc端
+/*function browserRedirect() {
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+        $(".button").on("touchstart", function (e) {
+            makeCode();
+        })
+    } else {
+        $(".button").on("click", function (e) {
+            makeCode();
+        });
+    }
+}*/
+function enableSubmit(bool){
+    if(bool){
+        $(".button").removeAttr("disabled");
+        $(".button").removeClass("buttonG").addClass("buttonB");
+    }
+    else {
+        $("#submit").attr("disabled","disabled");
+        $(".button").addClass("buttonG").removeClass("buttonB");
     }
 }
+function v_submitbutton(){
+    for(f in flags) if(!flags[f]) {
+        enableSubmit(false);
+        return;
+    }
+    enableSubmit(true);
+}
+var flags = [false,false,false,false];
+function v_ident(){
+    var ident = $("#identifier").val();
+    if(ident.length==0) {
+        $(".hintIdent").html("不得为空");
+        flags[0]=false;
+    }else{
+        $(".hintIdent").html("");
+        flags[0] = true;
+    }
+    v_submitbutton();
+}
+function v_address(){
+    var address = $("#address").val();
+    if(address.length==0) {
+        $(".hintAdr").html("不得为空");
+        flags[1]=false;
+    }else{
+        $(".hintAdr").html("");
+        flags[1] = true;
+    }
+    v_submitbutton();
+}
+function v_bank(){
+    var bank = $("#bank").val();
+    if(bank.length==0) {
+        $(".hintBank").html("不得为空");
+        flags[2]=false;
+    }else{
+        $(".hintBank").html("");
+        flags[2] = true;
+    }
+    $(".verify").css({"border-color":"#cdcdcd"});
+    v_submitbutton();
+}
+function v_desc(){
+    var desc = $("#desc").val();
+    if(desc.length==0) {
+        $(".hintDesc").html("不得为空");
+        flags[3]=false;
+    }else{
+        $(".hintDesc").html("");
+        flags[3] = true;
+    }
+    $(".verify").css({"border-color":"#cdcdcd"});
+    v_submitbutton();
+}
+function adaptValue(){
+    if(flags[0],flags[1],flags[2],flags[3]){
+        makeCode()
+>>>>>>> origin/master
+    }
+
+}
+$(function () {
+    v_submitbutton();
+});
 function makeCode() {
     clearTimeout(hechen());
     var name = $("#companyname").val();
